@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ma première page</title>
+		
+		<link rel="stylesheet"  type="text/css" href="/css/style.css">
+
+		<script type="text/javascript" src="/webjars/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	<header th:fragment="head">
+		
+		<div class="topnav" id="myTopnav">
+  <a th:href="@{/user/lister}" class="active">Home</a>
+  <a th:href="@{/user/lister}">Lister</a>
+  <a th:href="@{/user/add}">Ajouter</a>
+ <form method="post" th:action="@{/logout}">
+  <!-- Vos champs de formulaire ici -->
+  <input type="submit" class="a" value="Déconnexion">
+</form>
+ 
+	
+ <!--<a th:href="#" th:text="${#authentication.name}" class="auth">  </a> -->
+		
+  </div>
+		
+		
+</header>
+
+	</body>
+</html>

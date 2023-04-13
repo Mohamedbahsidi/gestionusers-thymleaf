@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+	
+<head>
+<meta  charset="UTF-8">
+<title>Insert title here</title>
+
+ <link rel="stylesheet"  type="text/css" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <header th:insert="~{inc/header.html :: head}"></header>
+
+
+
+
+<div class="col-md-6 col-xs-12">
+<div class="panel panel-info">
+	
+	
+
+<div class="panel-body">
+
+	</div>
+	</div>
+<table class="table table-striped caption-top">
+<captiont>List of person in data base</captiont>  
+<thead class="table-dark">
+<tr>
+<th>Id</th>
+<th>Prenom</th>
+<th >Nom</th>
+<th >Login</th>
+<th colspan="2" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="p:${users}">
+<td th:text="${p.id}"></td>
+<td th:text="${p.prenom}"></td>
+<td th:text="${p.nom}"> </td>
+<td th:text="${p.username}"> </td>
+<!--<td th:if="${#authorization.expression('hasRole(''ADMIN'')')}">-->
+<td>
+	<a th:href="@{/admin/update(id=${p.id}) }" class="btn btn-primary">Modifier</a></td>
+	<!--<td th:if="${#authorization.expression('hasRole(''ADMIN'')')}">-->
+	<td>
+	<a th:href="@{/admin/delete(id=${p.id})} " class="btn btn-danger">Supprimer</a></td>
+</tr>
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</body>
+</html>
