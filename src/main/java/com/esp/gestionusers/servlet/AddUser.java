@@ -62,7 +62,7 @@ private PasswordEncoder PasswordEncoder;
 		return "vues/listeusers";
 	}
 		@GetMapping("/admin/delete")
-		public String deletee(Integer id){
+		public String deletee(@RequestParam("id") Integer id){
 			
 			userRepository.deleteById(id);
 			 return "redirect:/user/lister";
@@ -70,7 +70,7 @@ private PasswordEncoder PasswordEncoder;
 	
 		
 		@GetMapping("/admin/update")
-		public String get(@RequestParam("id") Integer id, ModelMap model) {
+		public String get( Integer id, ModelMap model) {
 		Utilisateur user=	userRepository.findById(id).get();
 		if (user !=null) {
 			model.addAttribute("user", user);
